@@ -12,12 +12,6 @@
     // $find = $content->find('th',20);
     // echo $find->plaintext;
 
-    foreach ($content->find('th') as $key=>$element) {
-//         echo $key ."--";
-//         print_r($element->plaintext);
-//         echo "<br>";
-    }
-
     
 ?>
 <!DOCTYPE html>
@@ -31,7 +25,12 @@
 </head>
 
 <body>
-
+    <?php 
+        foreach ($content->find('th') as $key=>$element) { ?>
+            <p> <?= echo $element->plaintext ?> </p>
+    <?php 
+                                                         }
+    ?>
 </body>
 
 </html>
