@@ -13,9 +13,9 @@
     // echo $find->plaintext;
 
     foreach ($content->find('th') as $key=>$element) {
-        echo $key ."--";
-        print_r($element->plaintext);
-        echo "<br>";
+//         echo $key ."--";
+//         print_r($element->plaintext);
+//         echo "<br>";
     }
 
     
