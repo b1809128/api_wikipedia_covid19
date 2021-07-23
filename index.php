@@ -12,6 +12,12 @@
     // $find = $content->find('th',20);
     // echo $find->plaintext;
 
+    // foreach ($content->find('th') as $key=>$element) {
+    //     echo $key ."--";
+    //     print_r($element->plaintext);
+    //     echo "<br>";
+    // }
+
     
 ?>
 <!DOCTYPE html>
@@ -21,17 +27,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <?php 
-        foreach ($content->find('th') as $element) { 
-    ?>
-            <p> <?= echo $element->plaintext ?> </p>
-    <?php 
-      }
-    ?>
+        <?php
+            foreach ($content->find('th') as $key=>$element) { ?>
+                <p><?= $element->plaintext ?></p>
+        <?php    }
+        ?>
 </body>
 
 </html>
