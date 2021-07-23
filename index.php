@@ -26,10 +26,11 @@
 
 <body>
     <?php 
-        foreach ($content->find('th') as $key=>$element) { ?>
+        foreach ($content->find('th') as $element) { 
+    ?>
             <p> <?= echo $element->plaintext ?> </p>
     <?php 
-                                                         }
+      }
     ?>
 </body>
 
