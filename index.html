@@ -1,6 +1,3 @@
-<?php 
-    include './crawl.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
+    <div class="app">
+        <div class="container">
+            <button class="btn">CanTho</button>
+            <div class="card">
+                <div class="card-item infected cantho">
+                    <div class="card-title infected-title">F0</div>
+                    <div class="card-content">
+                        <div class="card-text">Tổng F0</div>
+                        <div class="card-number">483673</div>
+                    </div>
+                </div>
+                <div class="card-item recovered cantho">
+                    <div class="card-title recovered-title">F1</div>
+                    <div class="card-content">
+                        <div class="card-text">Tổng F1</div>
+                        <div class="card-number">483673</div>
+                    </div>
+                </div>
+                <div class="card-item treatment cantho">
+                    <div class="card-title treatment-title">F2</div>
+                    <div class="card-content">
+                        <div class="card-text">Tổng F2</div>
+                        <div class="card-number">483673</div>
+                    </div>
+                </div>
+                <div class="card-item death cantho">
+                    <div class="card-title death-title">i</div>
+                    <div class="card-content">
+                        <div class="card-text">Tử vong</div>
+                        <div class="card-number">483673</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn">VietNam</button>
+            <div class="card">
+                <div class="card-item infected vietnam">
+                    <div class="card-text background_1">Số ca nhiễm</div>
+                    <div class="card-number">483673</div>
+                </div>
+                <div class="card-item recovered vietnam">
+                    <div class="card-text background_2">Khỏi</div>
+                    <div class="card-number">483673</div>
+                </div>
+                <div class="card-item treatment vietnam">
+                    <div class="card-text background_3">Đang điều trị</div>
+                    <div class="card-number">483673</div>
+                </div>
+                <div class="card-item death vietnam">
+                    <div class="card-text background_4">Tử vong</div>
+                    <div class="card-number">483673</div>
+                </div>
+            </div>
+            <div class="chart"></div>
+        </div>
+    </div>
 </body>
 
 </html>

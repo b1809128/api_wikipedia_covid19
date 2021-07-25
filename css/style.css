@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+}
+
+.container {
+    display: block;
+    margin: 12px;
+}
+
+.card {
+    display: flex;
+    width: 100%;
+    /* flex: wrap; */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.card-item {
+    width: 200px;
+    height: 100px;
+    display: block;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+    /* padding: 8px; */
+    margin: 8px;
+    border-radius: 12px;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.card-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.infected {
+    color: rgba(221, 75, 57, 1);
+    /* border-bottom: 12px solid red; */
+}
+
+.recovered {
+    color: rgba(255, 133, 27, 1);
+    /* border-bottom: 12px solid green; */
+}
+
+.death {
+    color: rgba(0, 0, 0, 0.5);
+    /* border-bottom: 12px solid blue; */
+}
+
+.treatment {
+    color: rgba(243, 156, 18, 1);
+    /* border-bottom: 12px solid yellow; */
+}
+
+.btn {
+    width: 150px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+    border-radius: 10px;
+}
+
+.cantho {
+    display: flex;
+}
+
+.vietnam {
+    display: block;
+    text-align: center;
+}
+
+.background_1 {
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.background_2 {
+    background-color: rgba(255, 133, 27, 1);
+    color: white;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.background_3 {
+    background-color: rgba(243, 156, 18, 1);
+    color: white;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.background_4 {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-title {
+    width: 40%;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.infected-title {
+    background-color: rgba(221, 75, 57, 1);
+}
+
+.recovered-title {
+    background-color: rgba(255, 133, 27, 1);
+}
+
+.treatment-title {
+    background-color: rgba(243, 156, 18, 1);
+}
+
+.death-title {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-content {
+    padding: 8px;
+}
+
+.image-map {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+}
