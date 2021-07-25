@@ -7,6 +7,11 @@
     margin: 12px;
 }
 
+.title {
+    color: rgba(221, 75, 57, 1);
+    text-align: center;
+}
+
 .card {
     display: flex;
     width: 100%;
@@ -18,7 +23,7 @@
 }
 
 .card-item {
-    width: 200px;
+    width: 220px;
     height: 100px;
     display: block;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
@@ -41,6 +46,10 @@
 .infected {
     color: rgba(221, 75, 57, 1);
     /* border-bottom: 12px solid red; */
+}
+
+.today {
+    color: #28a745;
 }
 
 .recovered {
@@ -126,6 +135,10 @@
     background-color: rgba(221, 75, 57, 1);
 }
 
+.today-title {
+    background-color: #28a745;
+}
+
 .recovered-title {
     background-color: rgba(255, 133, 27, 1);
 }
@@ -148,4 +161,14 @@
     justify-content: center;
     text-align: center;
     margin: 20px;
+}
+
+footer,
+#time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 600;
 }
