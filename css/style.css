@@ -42,6 +42,10 @@
     margin-top: 10px;
 }
 
+.card-number.update {
+    font-size: 1rem;
+}
+
 .infected {
     color: rgba(221, 75, 57, 1);
     /* border-bottom: 12px solid red; */
@@ -154,12 +158,32 @@
     padding: 8px;
 }
 
-.image-map {
-    display: block;
+.map {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 20px;
+}
+
+.image-map {
+    width: 300px;
+}
+
+.data-chart {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding: 12px 24px;
+}
+
+.data-chart-text {
+    margin: 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(221, 75, 57, 1);
 }
 
 footer,

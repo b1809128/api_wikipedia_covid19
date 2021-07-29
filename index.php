@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19 Report</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
 <body>
@@ -99,7 +100,15 @@
                 </div>
             </div>
 
-            
+            <div class="map">
+                <div class="image-map">
+                    <?= $vietnam->find('td', 0)->innertext ?>
+                </div>
+                <div class="data-chart">
+                    <p class="data-chart-text">Số ca mắc Covid-19 trong 7 ngày gần nhất </p>
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                </div>
+            </div>
 
         </div>
         <footer>
@@ -108,9 +117,64 @@
     </div>
     <script type="text/javascript">
         const d = new Date();
-        document.getElementById('time').innerHTML = d ;
-        console.log(string_date);
+        document.getElementById('time').innerHTML = d;
+        var data = <?php
+                    $arr = [];
+                    foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
+                        if ($key % 2 == 0) {
+                            $number = $element->innertext;
+                            $arr[] = $element->innertext;
+                        }
+                    }
+                    echo json_encode($arr, JSON_HEX_TAG);
+                    ?>;
+        // console.log(data);
         
+        
+        var xValues = [" "," "," "," "," "," "," "];
+        var yValues = [];
+        var num = []
+        for(let i = 0; i < data.length; i++) {
+            yValues.push(Number(data[i]));
+        }
+
+        var getDB = yValues.map((data)=>{
+            return data
+        })  
+        var a = getDB[200];
+        console.log(getDB[200])
+        db = []
+        console.log(getDB)
+        for(let i = 204; i <= 210; i++){
+            db.push(getDB[i]*1000);
+        }
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(255,0,0,1)",
+                    borderColor: "rgba(255,0,0,0.5)",
+                    data: db
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 500,
+                            max: 200000
+                        }
+                    }],
+                }
+            }
+        });
     </script>
 </body>
 
