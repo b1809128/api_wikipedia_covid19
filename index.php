@@ -105,8 +105,9 @@
                     <?= $vietnam->find('td', 0)->innertext ?>
                 </div>
                 <div class="data-chart">
-                    <p class="data-chart-text">Số ca mắc Covid-19 trong 7 ngày gần nhất </p>
+                    <p class="data-chart-text">Biểu đồ Covid-19 trong 7 ngày gần nhất tại Việt Nam </p>
                     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                    
                 </div>
             </div>
 
@@ -116,37 +117,71 @@
         </footer>
     </div>
     <script type="text/javascript">
+        // In ra ngay thang nam
         const d = new Date();
         document.getElementById('time').innerHTML = d;
+
+        // Lay du lieu tuong tac voi js
         var data = <?php
                     $arr = [];
                     foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
                         if ($key % 2 == 0) {
-                            $number = $element->innertext;
+                            // $number = $element->innertext;
                             $arr[] = $element->innertext;
                         }
                     }
                     echo json_encode($arr, JSON_HEX_TAG);
                     ?>;
-        // console.log(data);
-        
-        
-        var xValues = [" "," "," "," "," "," "," "];
+
+        var recover = <?php
+                        $arr = [];
+                        foreach ($vietnam->find('div.bb-fl') as $key => $element) {
+
+                            $arr[] = $element->title;
+                        }
+                        echo json_encode($arr, JSON_HEX_TAG);
+                        ?>;
+
+        var arr_rec = []
+        for (let i = 613; i < recover.length; i += 3) {
+            arr_rec.push(Number(recover[i]));
+        }
+        // console.log(arr_rec);
+
+        const date = new Date();
+        var arr_date = [];
+        var x = date.getDate();
+        var y = (date.getMonth() + 1)
+
+        var s = 0;
+        for (let i = 0; i < 7; i++) {
+            s = x - i;
+            arr_date.push(s);
+        }
+
+        var new_db = arr_date.sort();
+
+        // Su ly du lieu dua vao bieu do
+        var xValues = [];
+
+        for (let i = 0; i < new_db.length; i++) {
+            xValues.push(new_db[i] + "/" + y);
+        }
+
         var yValues = [];
         var num = []
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             yValues.push(Number(data[i]));
         }
 
-        var getDB = yValues.map((data)=>{
+        var getDB = yValues.map((data) => {
             return data
-        })  
-        var a = getDB[200];
-        console.log(getDB[200])
-        db = []
-        console.log(getDB)
-        for(let i = 204; i <= 210; i++){
-            db.push(getDB[i]*1000);
+        })
+
+        var db = []
+        // console.log(getDB)
+        for (let i = 204; i <= 210; i++) {
+            db.push(getDB[i] * 1000);
         }
 
         new Chart("myChart", {
@@ -154,16 +189,22 @@
             data: {
                 labels: xValues,
                 datasets: [{
-                    fill: false,
-                    lineTension: 0,
-                    backgroundColor: "rgba(255,0,0,1)",
-                    borderColor: "rgba(255,0,0,0.5)",
-                    data: db
+                    data: db,
+                    borderColor: "red",
+                    fill: true,
+                    label: "Số ca nhiễm"
+                }, {
+                    data: arr_rec,
+                    borderColor: "green",
+                    fill: true,
+                    label: "Hồi phục"
                 }]
             },
             options: {
+                
                 legend: {
-                    display: false
+                    display: true,
+                    
                 },
                 scales: {
                     yAxes: [{
