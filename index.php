@@ -107,7 +107,7 @@
                 <div class="data-chart">
                     <p class="data-chart-text">Biểu đồ Covid-19 trong 7 ngày gần nhất tại Việt Nam </p>
                     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-                    
+
                 </div>
             </div>
 
@@ -142,30 +142,35 @@
                         echo json_encode($arr, JSON_HEX_TAG);
                         ?>;
 
+        var date_db = <?php
+                        $arr = [];
+                        foreach ($vietnam->find('td.bb-04em') as $key => $element) {
+
+                            $arr[] = $element->plaintext;
+                        }
+                        echo json_encode($arr, JSON_HEX_TAG);
+                        ?>;
+
+        var arr_date_db = [];
+        for (let i = 612; i < date_db.length; i += 3) {
+            arr_date_db.push(date_db[i]);
+            // console.log(date_db[i]);
+        }
+
+        // console.log(arr_date_db);
+
+
         var arr_rec = []
         for (let i = 613; i < recover.length; i += 3) {
             arr_rec.push(Number(recover[i]));
         }
-        // console.log(arr_rec);
 
-        const date = new Date();
-        var arr_date = [];
-        var x = date.getDate();
-        var y = (date.getMonth() + 1)
-
-        var s = 0;
-        for (let i = 0; i < 7; i++) {
-            s = x - i;
-            arr_date.push(s);
-        }
-
-        var new_db = arr_date.sort();
-
+        
         // Su ly du lieu dua vao bieu do
         var xValues = [];
 
-        for (let i = 0; i < new_db.length; i++) {
-            xValues.push(new_db[i] + "/" + y);
+        for (let i = 0; i < arr_date_db.length; i++) {
+            xValues.push(arr_date_db[i]);
         }
 
         var yValues = [];
@@ -201,10 +206,10 @@
                 }]
             },
             options: {
-                
+
                 legend: {
                     display: true,
-                    
+
                 },
                 scales: {
                     yAxes: [{
