@@ -101,13 +101,13 @@
             </div>
 
             <div class="map">
-                <div class="image-map">
-                    <?= $vietnam->find('td', 0)->innertext ?>
-                </div>
                 <div class="data-chart">
                     <p class="data-chart-text">Biểu đồ Covid-19 trong 7 ngày gần nhất tại Việt Nam </p>
                     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
+                </div>
+                <div class="image-map">
+                    <?= $vietnam->find('td', 0)->innertext ?>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
             arr_rec.push(Number(recover[i]));
         }
 
-        
+
         // Su ly du lieu dua vao bieu do
         var xValues = [];
 
