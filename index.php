@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19 Report</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="https://react-qh.herokuapp.com/favicon.ico">
+    <link rel="icon" href="./image/node2.svg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('span', 8)->plaintext - $content->find('span', 24)->plaintext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>
@@ -99,6 +99,7 @@
             <p>Copyright 2021 - All by QuocHuy's Developer </p>
         </footer>
     </div>
+    
     <script type="text/javascript">
         // In ra ngay thang nam
         const d = new Date();

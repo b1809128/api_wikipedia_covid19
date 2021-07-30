@@ -10,3 +10,8 @@ for (let i = 0; i < 7; i++) {
 }
 
 var new_db = arr_date.sort();
+
+$('.counter').countUp({
+    'time': 2000,
+    'delay': 10
+});
