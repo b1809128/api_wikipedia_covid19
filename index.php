@@ -121,7 +121,7 @@
         const d = new Date();
         document.getElementById('time').innerHTML = d;
 
-        // Lay du lieu tuong tac voi js
+        // Lay du lieu ca nhiem
         var data = <?php
                     $arr = [];
                     foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
@@ -132,7 +132,7 @@
                     }
                     echo json_encode($arr, JSON_HEX_TAG);
                     ?>;
-
+        //Lay du lieu hoi phuc
         var recover = <?php
                         $arr = [];
                         foreach ($vietnam->find('div.bb-fl') as $key => $element) {
@@ -141,7 +141,7 @@
                         }
                         echo json_encode($arr, JSON_HEX_TAG);
                         ?>;
-
+        // Lay du lieu ngay thang nam
         var date_db = <?php
                         $arr = [];
                         foreach ($vietnam->find('td.bb-04em') as $key => $element) {
@@ -152,42 +152,43 @@
                         ?>;
 
         var arr_date_db = [];
-        for (let i = 612; i < date_db.length; i += 3) {
-            arr_date_db.push(date_db[i]);
-            // console.log(date_db[i]);
+        for (let i = 615; i < date_db.length; i += 3) {
+            arr_date_db.push(date_db[i]);           
         }
 
-        // console.log(arr_date_db);
-
-
+        
         var arr_rec = []
-        for (let i = 613; i < recover.length; i += 3) {
+        for (let i = 616; i < recover.length; i += 3) {
             arr_rec.push(Number(recover[i]));
         }
 
 
         // Su ly du lieu dua vao bieu do
         var xValues = [];
-
         for (let i = 0; i < arr_date_db.length; i++) {
             xValues.push(arr_date_db[i]);
         }
+
+        console.log(xValues)
 
         var yValues = [];
         var num = []
         for (let i = 0; i < data.length; i++) {
             yValues.push(Number(data[i]));
         }
+       
 
         var getDB = yValues.map((data) => {
             return data
         })
 
+
         var db = []
-        // console.log(getDB)
-        for (let i = 204; i <= 210; i++) {
-            db.push(getDB[i] * 1000);
+        
+        for (let i = 205; i <= getDB.length; i++) {
+            db.push(parseFloat(getDB[i]) * 1000);
         }
+    //    console.log(db)
 
         new Chart("myChart", {
             type: "line",
