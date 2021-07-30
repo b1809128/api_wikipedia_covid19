@@ -24,13 +24,13 @@
 }
 
 .card-item {
-    width: 220px;
+    width: 200px;
     height: 100px;
     display: block;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
     /* padding: 8px; */
     margin: 8px;
-    border-radius: 12px;
+    border-radius: 2px;
 }
 
 .card-text {
@@ -42,12 +42,6 @@
     font-size: 1.8rem;
     font-weight: 600;
     margin-top: 10px;
-}
-
-.card-number-today {
-    font-size: 1rem;
-    font-weight: 600;
-    /* color: #28a745; */
 }
 
 .infected {
@@ -100,10 +94,6 @@
     border-color: transparent transparent transparent red;
 }
 
-.cantho {
-    display: flex;
-}
-
 .vietnam {
     display: block;
     text-align: center;
@@ -113,32 +103,32 @@
     background-color: rgba(255, 0, 0, 0.6);
     color: white;
     width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 .background_2 {
     background-color: #28a745;
     color: white;
     width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 .background_3 {
     background-color: rgba(243, 156, 18, 1);
     color: white;
     width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 .background_4 {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
     width: 100%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 .card-title {
@@ -171,7 +161,7 @@
 }
 
 .death-title {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .card-content {
