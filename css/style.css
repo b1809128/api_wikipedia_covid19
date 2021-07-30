@@ -42,8 +42,10 @@
     margin-top: 10px;
 }
 
-.card-number.update {
+.card-number-today {
     font-size: 1rem;
+    font-weight: 600;
+    /* color: #28a745; */
 }
 
 .infected {
@@ -56,7 +58,7 @@
 }
 
 .recovered {
-    color: rgba(255, 133, 27, 1);
+    color: #28a745;
     /* border-bottom: 12px solid green; */
 }
 
@@ -98,7 +100,7 @@
 }
 
 .background_2 {
-    background-color: rgba(255, 133, 27, 1);
+    background-color: #28a745;
     color: white;
     width: 100%;
     border-top-left-radius: 12px;

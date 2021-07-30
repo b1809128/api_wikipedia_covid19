@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19 Report</title>
-    <link rel="stylesheet" href="./css/style.css" >
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="https://react-qh.herokuapp.com/favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
@@ -33,40 +33,22 @@
 
                 ?>
 
-                <div class="card-item infected cantho">
-                    <div class="card-title infected-title">F0</div>
-                    <div class="card-content">
-                        <div class="card-text">Tổng F0</div>
-                        <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
-                    </div>
+                <div class="card-item infected vietnam">
+                    <div class="card-text background_1">Số ca nhiễm</div>
+                    <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
+                    <div class="card-number-today">Hôm nay: +<?= $content->find('span', 11)->plaintext ?></div>
                 </div>
-                <div class="card-item today cantho">
-                    <div class="card-title today-title">Today</div>
-                    <div class="card-content">
-                        <div class="card-text">F0 Hôm nay</div>
-                        <div class="card-number update"><?= "+" . $content->find('span', 11)->plaintext ?></div>
-                    </div>
+                <div class="card-item recovered vietnam">
+                    <div class="card-text background_2">Khỏi</div>
+                    <div class="card-number"><?= $content->find('span', 24)->plaintext ?></div>
                 </div>
-                <div class="card-item recovered cantho">
-                    <div class="card-title recovered-title">F1</div>
-                    <div class="card-content">
-                        <div class="card-text">Tổng F1</div>
-                        <div class="card-number"><?= $content->find('span', 15)->plaintext ?></div>
-                    </div>
+                <div class="card-item treatment vietnam">
+                    <div class="card-text background_3">Đang điều trị</div>
+                    <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
                 </div>
-                <div class="card-item treatment cantho">
-                    <div class="card-title treatment-title">F2</div>
-                    <div class="card-content">
-                        <div class="card-text">Tổng F2</div>
-                        <div class="card-number"><?= $content->find('span', 18)->plaintext ?></div>
-                    </div>
-                </div>
-                <div class="card-item death cantho">
-                    <div class="card-title death-title">i</div>
-                    <div class="card-content">
-                        <div class="card-text">Tử vong</div>
-                        <div class="card-number"><?= $content->find('span', 21)->plaintext ?></div>
-                    </div>
+                <div class="card-item death vietnam">
+                    <div class="card-text background_4">Tử vong</div>
+                    <div class="card-number"><?= $content->find('span', 21)->plaintext ?></div>
                 </div>
             </div>
             <button class="btn">Việt Nam</button>
@@ -237,10 +219,10 @@
                         echo json_encode($arr, JSON_HEX_TAG);
                         ?>;
         // console.log(cir_data)
-        var infected = parseFloat(Number(cir_data[20]))*1000;
-        var recov = parseFloat(Number(cir_data[23]))*1000;
-        var treating = parseFloat(Number(cir_data[21]))*1000;
-        var die = parseFloat(Number(cir_data[24]))*1000;
+        var infected = parseFloat(Number(cir_data[20])) * 1000;
+        var recov = parseFloat(Number(cir_data[23])) * 1000;
+        var treating = parseFloat(Number(cir_data[21])) * 1000;
+        var die = parseFloat(Number(cir_data[24])) * 1000;
         // Bieu do 2
         var xValues_1 = ["Số ca nhiễm", "Hồi phục", "Đang điều trị", "Tử vong"];
         var yValues_1 = [infected, recov, treating, die];
@@ -249,7 +231,7 @@
             "#1e7145",
             "#2b5797",
             "rgba(0,0,0,0.8)",
-            
+
         ];
 
         new Chart("chart-circle", {

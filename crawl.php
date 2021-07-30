@@ -7,14 +7,14 @@
         )
     );
     
-    $content = file_get_html('https://vi.wikipedia.org/wiki/%C4%90%E1%BA%A1i_d%E1%BB%8Bch_COVID-19_t%E1%BA%A1i_Vi%E1%BB%87t_Nam', false, stream_context_create($arrContextOptions));
+    $content = file_get_html('https://covid.cantho.gov.vn/?fbclid=IwAR006ORto0SYOL-Iz5VqgRDZpzAbyPCqM4Dz6TnhLvRCL-XcHKkRlAQtMa0', false, stream_context_create($arrContextOptions));
     
     // echo $content;
     
 
-    foreach ($content->find('div.bb-fl') as $key=>$element) {       
+    foreach ($content->find('span') as $key=>$element) {       
             echo $key ."--";           
-            print_r($element->title);
+            print_r($element->plaintext);
             echo "<br>";       
     }
     
