@@ -1,10 +1,12 @@
 * {
+    box-sizing: border-box;
+    padding: 0;
     margin: 0;
 }
 
 .container {
     display: block;
-    margin: 12px;
+    margin: 0 auto;
 }
 
 .title {
@@ -75,11 +77,27 @@
 .btn {
     width: 150px;
     height: 30px;
+    font-size: 1.4rem;
+    font-weight: 700;
     outline: none;
     border: none;
-    background-color: rgba(255, 0, 0, 0.6);
-    color: white;
-    border-radius: 10px;
+    background-color: #fff;
+    color: rgba(255, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0 25px 220px;
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn::before {
+    content: "";
+    left: 14px;
+    top: 25%;
+    position: absolute;
+    border: 8px solid;
+    border-color: transparent transparent transparent red;
 }
 
 .cantho {
@@ -195,4 +213,10 @@ footer,
     margin: 20px 0;
     text-align: center;
     font-weight: 600;
+}
+
+@media screen and (max-width:960px) {
+    .btn {
+        margin: auto;
+    }
 }
