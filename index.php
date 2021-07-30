@@ -103,8 +103,8 @@
             <div class="map">
                 <div class="data-chart">
                     <p class="data-chart-text">Biểu đồ Covid-19 trong 7 ngày gần nhất tại Việt Nam </p>
-                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
+                    <canvas id="chart-square" style="width:100%;max-width:600px"></canvas>
+                    <canvas id="chart-circle" style="width:100%;max-width:500px"></canvas>
                 </div>
                 <div class="image-map">
                     <?= $vietnam->find('td', 0)->innertext ?>
@@ -153,10 +153,10 @@
 
         var arr_date_db = [];
         for (let i = 615; i < date_db.length; i += 3) {
-            arr_date_db.push(date_db[i]);           
+            arr_date_db.push(date_db[i]);
         }
 
-        
+
         var arr_rec = []
         for (let i = 616; i < recover.length; i += 3) {
             arr_rec.push(Number(recover[i]));
@@ -169,14 +169,14 @@
             xValues.push(arr_date_db[i]);
         }
 
-        console.log(xValues)
+        // console.log(xValues)
 
         var yValues = [];
         var num = []
         for (let i = 0; i < data.length; i++) {
             yValues.push(Number(data[i]));
         }
-       
+
 
         var getDB = yValues.map((data) => {
             return data
@@ -184,13 +184,14 @@
 
 
         var db = []
-        
+
         for (let i = 205; i <= getDB.length; i++) {
             db.push(parseFloat(getDB[i]) * 1000);
         }
-    //    console.log(db)
+        //    console.log(db)
 
-        new Chart("myChart", {
+        // Bieu do 1
+        new Chart("chart-square", {
             type: "line",
             data: {
                 labels: xValues,
@@ -219,6 +220,50 @@
                             // max: 200000
                         }
                     }],
+                }
+            }
+        });
+
+
+        //Circle data
+
+        var cir_data = <?php
+                        $arr = [];
+                        foreach ($vietnam->find('th') as $key => $element) {
+
+                            $arr[] = $element->plaintext;
+                        }
+                        echo json_encode($arr, JSON_HEX_TAG);
+                        ?>;
+        // console.log(cir_data)
+        var infected = parseFloat(Number(cir_data[20]))*1000;
+        var recov = parseFloat(Number(cir_data[23]))*1000;
+        var treating = parseFloat(Number(cir_data[21]))*1000;
+        var die = parseFloat(Number(cir_data[24]))*1000;
+        // Bieu do 2
+        var xValues_1 = ["Số ca nhiễm", "Hồi phục", "Đang điều trị", "Tử vong"];
+        var yValues_1 = [infected, recov, treating, die];
+        var barColors = [
+            "#b91d47",
+            "#1e7145",
+            "#2b5797",
+            "rgba(0,0,0,0.8)",
+            
+        ];
+
+        new Chart("chart-circle", {
+            type: "doughnut",
+            data: {
+                labels: xValues_1,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues_1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    // text: "World Wide Wine Production 2018"
                 }
             }
         });
