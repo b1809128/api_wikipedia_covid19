@@ -136,7 +136,7 @@
                         ?>;
 
         var arr_date_db = [];
-        for (let i = 615; i <= date_db.length-2; i += 3) {
+        for (let i = 0; i < date_db.length; i += 3) {
             arr_date_db.push(date_db[i]);
         }
 
@@ -151,7 +151,7 @@
 
         // Su ly du lieu dua vao bieu do
         var xValues = [];
-        for (let i = 1; i <= arr_date_db.length-1; i++) {
+        for (let i = arr_date_db.length-7; i <= arr_date_db.length-1; i++) {
             xValues.push(arr_date_db[i]);
         }
 
