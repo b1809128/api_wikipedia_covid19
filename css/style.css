@@ -27,10 +27,10 @@
     width: 200px;
     height: 100px;
     display: block;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
     /* padding: 8px; */
     margin: 8px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .card-text {
@@ -46,26 +46,18 @@
 
 .infected {
     color: rgba(221, 75, 57, 1);
-    /* border-bottom: 12px solid red; */
-}
-
-.today {
-    color: #28a745;
 }
 
 .recovered {
     color: #28a745;
-    /* border-bottom: 12px solid green; */
 }
 
 .death {
     color: rgba(0, 0, 0, 0.5);
-    /* border-bottom: 12px solid blue; */
 }
 
 .treatment {
     color: rgba(243, 156, 18, 1);
-    /* border-bottom: 12px solid yellow; */
 }
 
 .btn {
@@ -103,69 +95,32 @@
     background-color: rgba(255, 0, 0, 0.6);
     color: white;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .background_2 {
     background-color: #28a745;
     color: white;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .background_3 {
     background-color: rgba(243, 156, 18, 1);
     color: white;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .background_4 {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     width: 100%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
-
-.card-title {
-    width: 40%;
-    height: 100%;
-    color: white;
-    display: flex;
-    align-items: center;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    font-size: 1.8rem;
-    font-weight: 600;
-    justify-content: center;
-}
-
-.infected-title {
-    background-color: rgba(221, 75, 57, 1);
-}
-
-.today-title {
-    background-color: #28a745;
-}
-
-.recovered-title {
-    background-color: rgba(255, 133, 27, 1);
-}
-
-.treatment-title {
-    background-color: rgba(243, 156, 18, 1);
-}
-
-.death-title {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.card-content {
-    padding: 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .map {
@@ -207,6 +162,6 @@ footer,
 
 @media screen and (max-width:960px) {
     .btn {
-        margin: auto;
+        margin: 12px auto;
     }
 }
