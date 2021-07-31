@@ -136,9 +136,11 @@
                         ?>;
 
         var arr_date_db = [];
-        for (let i = 615; i < date_db.length; i += 3) {
+        for (let i = 615; i <= date_db.length-2; i += 3) {
             arr_date_db.push(date_db[i]);
         }
+
+        // console.log(arr_date_db)
 
 
         var arr_rec = []
@@ -149,11 +151,11 @@
 
         // Su ly du lieu dua vao bieu do
         var xValues = [];
-        for (let i = 0; i < arr_date_db.length; i++) {
+        for (let i = 1; i <= arr_date_db.length-1; i++) {
             xValues.push(arr_date_db[i]);
         }
 
-        // console.log(xValues)
+        console.log(xValues)
 
         var yValues = [];
         var num = []
@@ -169,10 +171,10 @@
 
         var db = []
 
-        for (let i = 205; i <= getDB.length; i++) {
+        for (let i = (data.length- 7); i <= getDB.length; i++) {
             db.push(parseFloat(getDB[i]) * 1000);
         }
-        //    console.log(db)
+        //    console.log(getDB)
 
         // Bieu do 1
         new Chart("chart-square", {
