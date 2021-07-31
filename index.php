@@ -155,7 +155,7 @@
             xValues.push(arr_date_db[i]);
         }
 
-        console.log(xValues)
+        // console.log(xValues)
 
         var yValues = [];
         var num = []
