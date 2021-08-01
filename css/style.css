@@ -166,6 +166,7 @@ footer,
     }
 
     .card-item{        
-        width:180px;
+        width:140px;
+        height:95px;
     }
 }
