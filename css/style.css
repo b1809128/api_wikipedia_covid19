@@ -164,4 +164,8 @@ footer,
     .btn {
         margin: 12px auto;
     }
+
+    .card-item{        
+        width:180px;
+    }
 }
