@@ -160,7 +160,7 @@ footer,
     font-weight: 600;
 }
 
-@media screen and (max-width:960px) {
+@media screen and (max-width:768px) {
     .btn {
         margin: 12px auto;
     }
