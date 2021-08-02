@@ -165,6 +165,13 @@ footer,
         margin: 12px auto;
     }
 
+    .card{
+        display:flex;
+        
+        align-items: center;
+        justify-content: center;
+    }
+
     .card-item{        
         width:140px;
         height:95px;

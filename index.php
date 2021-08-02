@@ -36,7 +36,7 @@
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
-                    <div class="card-number-today">Hôm nay: +<?= $content->find('span', 11)->plaintext ?></div>
+                    <div class="card-number-today">+<?= $content->find('span', 11)->plaintext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
@@ -69,7 +69,7 @@
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $vietnam->find('th', 20)->plaintext ?></div>
-                    <div>Hôm nay: +<?= $rss->find('strong',1)->innertext ?></div>
+                    <div>+<?= $rss->find('strong',1)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
