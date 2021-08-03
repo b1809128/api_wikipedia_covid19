@@ -1,17 +1,9 @@
-const date = new Date();
-var arr_date = [];
-var x = date.getDate();
-var y = (date.getMonth() + 1)
-
-var s = 0;
-for (let i = 0; i < 7; i++) {
-    s = x - i;
-    arr_date.push(s);
+function getInfected(data){
+        var yValues = [];
+        for (let i = 0; i < data.length; i++) {
+            yValues.push(Number(data[i]));
+        }
+        console.log(yValues);
 }
 
-var new_db = arr_date.sort();
-
-$('.counter').countUp({
-    'time': 2000,
-    'delay': 10
-});
+// getInfected(data)

@@ -1,3 +1,6 @@
+<?php
+require './php/function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,20 +21,6 @@
             <h5 id="time"></h5>
             <button class="btn">Cần Thơ</button>
             <div class="card">
-                <?php
-                require_once './simple_html_dom.php';
-                $arrContextOptions = array(
-                    "ssl" => array(
-                        "verify_peer" => false,
-                        "verify_peer_name" => false
-                    )
-                );
-
-                $content = file_get_html('https://covid.cantho.gov.vn/?fbclid=IwAR006ORto0SYOL-Iz5VqgRDZpzAbyPCqM4Dz6TnhLvRCL-XcHKkRlAQtMa0', false, stream_context_create($arrContextOptions));
-
-
-
-                ?>
 
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
@@ -53,23 +42,10 @@
             </div>
             <button class="btn">Việt Nam</button>
             <div class="card">
-                <?php
-                require_once './simple_html_dom.php';
-                $arrContextOptions = array(
-                    "ssl" => array(
-                        "verify_peer" => false,
-                        "verify_peer_name" => false
-                    )
-                );
-
-                $vietnam = file_get_html('https://vi.wikipedia.org/wiki/%C4%90%E1%BA%A1i_d%E1%BB%8Bch_COVID-19_t%E1%BA%A1i_Vi%E1%BB%87t_Nam', false, stream_context_create($arrContextOptions));
-    $rss = file_get_html('https://rsstin.com/topic/covid-19?utm_source=coccoc_context&utm_medium=CPC&utm_campaign=RSSTIN%2ECOM&utm_term=covid&utm_content=36764798&md=_0u7e50vdaa*Cr3GhsODtX4tKHPqZpuei1-JLidqizJd6qqz68t50KG57tcAl84vgeC2uxhJSiP8E.', false, stream_context_create($arrContextOptions));
-
-                ?>
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $vietnam->find('th', 20)->plaintext ?></div>
-                    <div>+<?= $rss->find('strong',1)->innertext ?></div>
+                    <div>+<?= $rss->find('strong', 1)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
@@ -101,18 +77,20 @@
             <p>Copyright 2021 - All by QuocHuy's Developer </p>
         </footer>
     </div>
-    
+
     <script type="text/javascript">
         // In ra ngay thang nam
-        const d = new Date();
-        document.getElementById('time').innerHTML = d;
+        function getLastUpdate() {
+            const d = new Date();
+            document.getElementById('time').innerHTML = d;
+        }
+        getLastUpdate();
 
         // Lay du lieu ca nhiem
         var data = <?php
                     $arr = [];
                     foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
                         if ($key % 2 == 0) {
-                            // $number = $element->innertext;
                             $arr[] = $element->innertext;
                         }
                     }
@@ -137,59 +115,51 @@
                         echo json_encode($arr, JSON_HEX_TAG);
                         ?>;
 
-        var arr_date_db = [];
-        for (let i = 0; i < date_db.length; i += 3) {
-            arr_date_db.push(date_db[i]);
-        }
-
-        // console.log(arr_date_db)
-
-
-        var arr_rec = []
-        for (let i = 616; i < recover.length; i += 3) {
-            arr_rec.push(Number(recover[i]));
-        }
-
 
         // Su ly du lieu dua vao bieu do
-        var xValues = [];
-        for (let i = arr_date_db.length-7; i <= arr_date_db.length-1; i++) {
-            xValues.push(arr_date_db[i]);
+        function getSevenDay(data) {
+            var arr_date_db = [];
+            for (let i = 0; i < data.length; i += 3) {
+                arr_date_db.push(data[i]);
+            }
+            var xValues = [];
+            for (let i = arr_date_db.length - 7; i < arr_date_db.length; i ++) {
+                xValues.push(arr_date_db[i]);
+            }
+            return xValues;
         }
 
-        // console.log(xValues)
+        // console.log(getSevenDay(date_db))
 
-        var yValues = [];
-        var num = []
-        for (let i = 0; i < data.length; i++) {
-            yValues.push(Number(data[i]));
+        function getInfected(data) {
+            var yValues = [];
+            for (let i = data.length - 7; i < data.length; i++) {
+                yValues.push(parseFloat(Number(data[i])) * 1000);
+            }
+            return yValues;
         }
 
-
-        var getDB = yValues.map((data) => {
-            return data
-        })
-
-
-        var db = []
-
-        for (let i = (data.length- 7); i <= getDB.length; i++) {
-            db.push(parseFloat(getDB[i]) * 1000);
+        function getRecovered(data) {
+            var arr_rec = []
+            for (let i = 616; i < data.length; i += 3) {
+                arr_rec.push(Number(data[i]));
+            }
+            return arr_rec;
         }
-        //    console.log(getDB)
+
 
         // Bieu do 1
         new Chart("chart-square", {
             type: "line",
             data: {
-                labels: xValues,
+                labels: getSevenDay(date_db),
                 datasets: [{
-                    data: db,
+                    data: getInfected(data),
                     borderColor: "red",
                     fill: true,
                     label: "Số ca nhiễm"
                 }, {
-                    data: arr_rec,
+                    data: getRecovered(recover),
                     borderColor: "green",
                     fill: true,
                     label: "Hồi phục"
@@ -224,6 +194,7 @@
                         echo json_encode($arr, JSON_HEX_TAG);
                         ?>;
         // console.log(cir_data)
+
         var infected = parseFloat(Number(cir_data[20])) * 1000;
         var recov = parseFloat(Number(cir_data[23])) * 1000;
         var treating = parseFloat(Number(cir_data[21])) * 1000;
