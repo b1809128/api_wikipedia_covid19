@@ -15,7 +15,7 @@
 
     foreach ($content->find('td') as $key=>$element) {       
             echo $key ."--";           
-            print_r($element->plaintext);
+            print_r($element->innertext);
             echo "<br>";       
     }
     

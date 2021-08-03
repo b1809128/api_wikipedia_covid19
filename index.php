@@ -87,35 +87,14 @@ require './php/function.php';
         getLastUpdate();
 
         // Lay du lieu ca nhiem
-        var data = <?php
-                    $arr = [];
-                    foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
-                        if ($key % 2 == 0) {
-                            $arr[] = $element->innertext;
-                        }
-                    }
-                    echo json_encode($arr, JSON_HEX_TAG);
-                    ?>;
+        var data = <?php require './php/getDataInfected.php' ?>;
         //Lay du lieu hoi phuc
-        var recover = <?php
-                        $arr = [];
-                        foreach ($vietnam->find('div.bb-fl') as $key => $element) {
-
-                            $arr[] = $element->title;
-                        }
-                        echo json_encode($arr, JSON_HEX_TAG);
-                        ?>;
+        var recover = <?php require './php/getDataRecovered.php' ?>;
         // Lay du lieu ngay thang nam
-        var date_db = <?php
-                        $arr = [];
-                        foreach ($vietnam->find('td.bb-04em') as $key => $element) {
-
-                            $arr[] = $element->plaintext;
-                        }
-                        echo json_encode($arr, JSON_HEX_TAG);
-                        ?>;
-
-
+        var date_db = <?php require './php/getDataDate.php' ?>;
+        //Circle data
+        var cir_data = <?php require './php/getDataCircle.php' ?>;
+        
         // Su ly du lieu dua vao bieu do
         function getSevenDay(data) {
             var arr_date_db = [];
@@ -123,13 +102,11 @@ require './php/function.php';
                 arr_date_db.push(data[i]);
             }
             var xValues = [];
-            for (let i = arr_date_db.length - 7; i < arr_date_db.length; i ++) {
+            for (let i = arr_date_db.length - 7; i < arr_date_db.length; i++) {
                 xValues.push(arr_date_db[i]);
             }
             return xValues;
         }
-
-        // console.log(getSevenDay(date_db))
 
         function getInfected(data) {
             var yValues = [];
@@ -145,6 +122,14 @@ require './php/function.php';
                 arr_rec.push(Number(data[i]));
             }
             return arr_rec;
+        }
+
+        function getLeastDay(data) {
+            var arr = [];
+            for (let i = 0; i < 5; i++) {
+                arr.push(parseFloat(Number(data[i])) * 1000);
+            }
+            return arr;
         }
 
 
@@ -182,18 +167,6 @@ require './php/function.php';
             }
         });
 
-
-        //Circle data
-
-        var cir_data = <?php
-                        $arr = [];
-                        foreach ($vietnam->find('th') as $key => $element) {
-
-                            $arr[] = $element->plaintext;
-                        }
-                        echo json_encode($arr, JSON_HEX_TAG);
-                        ?>;
-        // console.log(cir_data)
 
         var infected = parseFloat(Number(cir_data[20])) * 1000;
         var recov = parseFloat(Number(cir_data[23])) * 1000;

@@ -133,7 +133,10 @@
 }
 
 .image-map {
-    width: 300px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 400px;
 }
 
 .data-chart {
