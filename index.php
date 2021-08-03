@@ -24,20 +24,21 @@ require './php/function.php';
 
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
-                    <div class="card-number"><?= $content->find('span', 8)->plaintext ?></div>
-                    <div class="card-number-today">+<?= $content->find('span', 11)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('.number', 0)->plaintext ?></div>
+                    <div class="card-number-today">+<?= $content->find('.number', 1)->plaintext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
-                    <div class="card-number"><?= $content->find('span', 24)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('.number', 4)->plaintext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $content->find('span', 8)->plaintext - $content->find('span', 24)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('.number', 0)->plaintext - $content->find('.number', 4)->plaintext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>
-                    <div class="card-number"><?= $content->find('span', 21)->plaintext ?></div>
+                    <div class="card-number">-</div>
+                    <div class="card-number-today">Đang cập nhật</div>
                 </div>
             </div>
             <button class="btn">Việt Nam</button>
