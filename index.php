@@ -24,16 +24,16 @@ require './php/function.php';
 
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
-                    <div class="card-number"><?= $content->find('.number', 0)->plaintext ?></div>
-                    <div class="card-number-today">+<?= $content->find('.number', 1)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('span', 8)->innertext ?></div>
+                    <div class="card-number-today">+<?= $content->find('span', 11)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
-                    <div class="card-number"><?= $content->find('.number', 4)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('span', 21)->innertext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $content->find('.number', 0)->plaintext - $content->find('.number', 4)->plaintext ?></div>
+                    <div class="card-number"><?= $content->find('span', 8)->innertext - $content->find('span', 21)->innertext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>

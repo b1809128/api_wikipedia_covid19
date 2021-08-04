@@ -13,7 +13,7 @@
     
     // echo $content->find('div#divcovid3',0);
 
-    foreach ($content->find('.number') as $key=>$element) {       
+    foreach ($content->find('span') as $key=>$element) {       
             echo $key ."--";           
             print_r($element->innertext);
             echo "<br>";       
