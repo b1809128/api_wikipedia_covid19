@@ -119,11 +119,18 @@ require './php/function.php';
 
         function getRecovered(data) {
             var arr_rec = []
-            for (let i = 616; i < data.length; i += 3) {
+            for (let i = data.length-2;i >= 0; i-=3) {
                 arr_rec.push(Number(data[i]));
             }
-            return arr_rec;
+            var arr_new_rec = [];
+            for(i = 0; i < 7; i++){
+                arr_new_rec.push(arr_rec[i]);
+            }
+            return arr_new_rec;
         }
+
+
+        console.log(getRecovered(recover));
 
         function getLeastDay(data) {
             var arr = [];
@@ -132,7 +139,8 @@ require './php/function.php';
             }
             return arr;
         }
-
+        
+        
 
         // Bieu do 1
         new Chart("chart-square", {
@@ -145,7 +153,7 @@ require './php/function.php';
                     fill: true,
                     label: "Số ca nhiễm"
                 }, {
-                    data: getRecovered(recover),
+                    data: getRecovered(recover).sort(),
                     borderColor: "green",
                     fill: true,
                     label: "Hồi phục"
