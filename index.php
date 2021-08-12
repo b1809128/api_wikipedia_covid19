@@ -129,9 +129,6 @@ require './php/function.php';
             return arr_new_rec;
         }
 
-
-        console.log(getRecovered(recover));
-
         function getLeastDay(data) {
             var arr = [];
             for (let i = 0; i < 5; i++) {
@@ -176,11 +173,11 @@ require './php/function.php';
             }
         });
 
-
-        var infected = parseFloat(Number(cir_data[20])) * 1000;
-        var recov = parseFloat(Number(cir_data[23])) * 1000;
-        var treating = parseFloat(Number(cir_data[21])) * 1000;
-        var die = parseFloat(Number(cir_data[24])) * 1000;
+        console.log(cir_data);
+        var infected = parseFloat(Number(cir_data[18])) * 1000;
+        var recov = parseFloat(Number(cir_data[21])) * 1000;
+        var treating = parseFloat(Number(cir_data[19])) * 1000;
+        var die = parseFloat(Number(cir_data[22])) * 1000;
         // Bieu do 2
         var xValues_1 = ["Số ca nhiễm", "Hồi phục", "Đang điều trị", "Tử vong"];
         var yValues_1 = [infected, recov, treating, die];
