@@ -123,7 +123,7 @@ require './php/function.php';
                 arr_rec.push(Number(data[i]));
             }
             var arr_new_rec = [];
-            for(i = 0; i < 7; i++){
+            for(i = 6; i >= 0; i--){
                 arr_new_rec.push(arr_rec[i]);
             }
             return arr_new_rec;
@@ -137,6 +137,7 @@ require './php/function.php';
             return arr;
         }
         
+        // console.log(getRecovered(recover));
         
 
         // Bieu do 1
@@ -150,7 +151,7 @@ require './php/function.php';
                     fill: true,
                     label: "Số ca nhiễm"
                 }, {
-                    data: getRecovered(recover).sort(),
+                    data: getRecovered(recover),
                     borderColor: "green",
                     fill: true,
                     label: "Hồi phục"
@@ -173,7 +174,7 @@ require './php/function.php';
             }
         });
 
-        console.log(cir_data);
+        // console.log(cir_data);
         var infected = parseFloat(Number(cir_data[18])) * 1000;
         var recov = parseFloat(Number(cir_data[21])) * 1000;
         var treating = parseFloat(Number(cir_data[19])) * 1000;
