@@ -24,16 +24,17 @@ require './php/function.php';
 
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
-                    <div class="card-number"><?= $content->find('span', 8)->innertext ?></div>
-                    <div class="card-number-today">+<?= $content->find('span', 11)->innertext ?></div>
+                    <div class="card-number"><?= $content->find('.info-box-number.number.text-red', 0)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 1)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
-                    <div class="card-number"><?= $content->find('span', 21)->innertext ?></div>
+                    <div class="card-number"><?= $content->find('.info-box-number.number.text-green', 0)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 3)->innertext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $content->find('span', 8)->innertext - $content->find('span', 21)->innertext ?></div>
+                    <div class="card-number"><?= $content->find('.info-box-number.number.text-red', 0)->innertext - $content->find('.info-box-number.number.text-green', 0)->innertext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>
@@ -137,7 +138,7 @@ require './php/function.php';
             return arr;
         }
         
-        // console.log(getRecovered(recover));
+        console.log(getInfected(data));
         
 
         // Bieu do 1
