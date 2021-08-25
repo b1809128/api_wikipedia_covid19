@@ -114,9 +114,9 @@ require './php/function.php';
             var para;
             for (let i = data.length - 7; i < data.length; i++) {
                 // yValues.push(parseFloat(Number(data[i])) * 1000);
-                para = document.createElement("P"); // Create a <p> element
+                para = document.createElement("p"); // Create a <p> element
                 para.innerText = (parseFloat(Number(data[i])) * 1000); // Insert text
-                document.body.appendChild(para);
+                document.getElementById("data_infected").appendChild(para);
             }
             // return yValues;
         }
