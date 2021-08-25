@@ -63,20 +63,19 @@ require './php/function.php';
                 </div>
             </div>
 
-            <div class="map">
+            <!-- <div class="map">
                 <div class="data-chart">
                     <p class="data-chart-text">Biểu đồ Covid-19 trong 7 ngày gần nhất tại Việt Nam </p>
                     <canvas id="chart-square" style="width:100%;max-width:600px"></canvas>
                     <canvas id="chart-circle" style="width:100%;max-width:500px"></canvas>
                 </div>
                 <div class="image-map">
-                    <?= $vietnam->find('td', 0)->innertext ?>
                 </div>
-            </div>
-            
+            </div> -->
+            <div id="data_infected"></div>
         </div>
         <footer>
-            <p>Copyright 2021 - All by QuocHuy's Developer </p>
+            <div>Copyright 2021 - All by QuocHuy's Developer </div>
         </footer>
     </div>
 
@@ -96,7 +95,7 @@ require './php/function.php';
         var date_db = <?php require './php/getDataDate.php' ?>;
         //Circle data
         var cir_data = <?php require './php/getDataCircle.php' ?>;
-        
+
         // Su ly du lieu dua vao bieu do
         function getSevenDay(data) {
             var arr_date_db = [];
@@ -111,20 +110,26 @@ require './php/function.php';
         }
 
         function getInfected(data) {
-            var yValues = [];
+            // var yValues = [];
+            var para;
             for (let i = data.length - 7; i < data.length; i++) {
-                yValues.push(parseFloat(Number(data[i])) * 1000);
+                // yValues.push(parseFloat(Number(data[i])) * 1000);
+                para = document.createElement("P"); // Create a <p> element
+                para.innerText = (parseFloat(Number(data[i])) * 1000); // Insert text
+                document.body.appendChild(para);
             }
-            return yValues;
+            // return yValues;
         }
+
+        getInfected(data);
 
         function getRecovered(data) {
             var arr_rec = []
-            for (let i = data.length-2;i >= 0; i-=3) {
+            for (let i = data.length - 2; i >= 0; i -= 3) {
                 arr_rec.push(Number(data[i]));
             }
             var arr_new_rec = [];
-            for(i = 6; i >= 0; i--){
+            for (i = 6; i >= 0; i--) {
                 arr_new_rec.push(arr_rec[i]);
             }
             return arr_new_rec;
@@ -138,75 +143,9 @@ require './php/function.php';
             return arr;
         }
         
-        console.log(getInfected(data));
+
+
         
-
-        // Bieu do 1
-        new Chart("chart-square", {
-            type: "line",
-            data: {
-                labels: getSevenDay(date_db),
-                datasets: [{
-                    data: getInfected(data),
-                    borderColor: "red",
-                    fill: true,
-                    label: "Số ca nhiễm"
-                }, {
-                    data: getRecovered(recover),
-                    borderColor: "green",
-                    fill: true,
-                    label: "Hồi phục"
-                }]
-            },
-            options: {
-
-                legend: {
-                    display: true,
-
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            // min: 500,
-                            // max: 200000
-                        }
-                    }],
-                }
-            }
-        });
-
-        // console.log(cir_data);
-        var infected = parseFloat(Number(cir_data[18])) * 1000;
-        var recov = parseFloat(Number(cir_data[21])) * 1000;
-        var treating = parseFloat(Number(cir_data[19])) * 1000;
-        var die = parseFloat(Number(cir_data[22])) * 1000;
-        // Bieu do 2
-        var xValues_1 = ["Số ca nhiễm", "Hồi phục", "Đang điều trị", "Tử vong"];
-        var yValues_1 = [infected, recov, treating, die];
-        var barColors = [
-            "#b91d47",
-            "#1e7145",
-            "#2b5797",
-            "rgba(0,0,0,0.8)",
-
-        ];
-
-        new Chart("chart-circle", {
-            type: "doughnut",
-            data: {
-                labels: xValues_1,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues_1
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    // text: "World Wide Wine Production 2018"
-                }
-            }
-        });
     </script>
 </body>
 
