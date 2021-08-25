@@ -47,7 +47,7 @@ require './php/function.php';
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
-                    <div><?= $rss->find('strong', 0)->innertext ?></div>
+                    <div class="card-number-today"><?= $rss->find('strong', 0)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
