@@ -25,12 +25,12 @@ require './php/function.php';
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $content->find('.info-box-number.number.text-red', 0)->innertext ?></div>
-                    <div class="card-number-today"><?= $content->find('span.number', 1)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 1)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
                     <div class="card-number"><?= $content->find('.info-box-number.number.text-green', 0)->innertext ?></div>
-                    <div class="card-number-today"><?= $content->find('span.number', 3)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 3)->innertext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
@@ -47,7 +47,7 @@ require './php/function.php';
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
-                    <div class="card-number-today"><?= $rss->find('strong', 0)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay <?= $rss->find('strong', 0)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
@@ -74,17 +74,55 @@ require './php/function.php';
             </div> -->
             <div id="data_infected">
                 <?php
-                    $arr = [];
-                    foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
-                        if ($key % 2 == 0) {
-                            $arr[] = $element->innertext;
-                        }
+                $arr = [];
+                foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
+                    if ($key % 2 == 0) {
+                        $arr[] = $element->innertext;
+                    }
+                }
+
+                // echo sizeof($arr);
+                for ($i = count($arr) - 7; $i < count($arr); $i++) {
+                    echo "<infected>" . $arr[$i] . "</infected>";
+                }
+                ?>
+            </div>
+            <div id="data_recovered">
+                <?php
+                $arr_1 = [];
+                foreach ($vietnam->find('div.bb-fl') as $key => $element) {
+
+                    $arr_1[] = $element->title;
+                }
+                for ($i = count($arr_1)-20; $i < count($arr_1); $i+=3) {
+                    echo "<recovered>" . $arr_1[$i] . "</recovered>";
+                }
+                ?>
+            </div>
+            <div id="data_date">
+                <?php
+                    $arr_2 = [];
+                    foreach ($vietnam->find('td.bb-04em') as $key => $element) {
+                    
+                        $arr_2[] = $element->plaintext;
+                    }
+                    $date = [];
+                    for ($i = 0 ; $i < count($arr_2); $i+=3) {
+                        $date[] = $arr_2[$i];
                     }
 
-                    // echo sizeof($arr);
-                    for($i = count($arr)-7; $i < count($arr); $i++) {
-                        echo "<p>".$arr[$i]."</p>";
+                    for($i = count($date)-7 ; $i < count($date); $i++){
+                        echo "<date>".$date[$i]."</date>";
                     }
+                ?>
+            </div>
+            <div id="data_circle">
+                <?php
+                    echo "<circle>".$vietnam->find('th', 18)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 21)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 19)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 22)->plaintext."</circle>";
+
                 ?>
             </div>
         </div>
@@ -100,62 +138,6 @@ require './php/function.php';
             document.getElementById('time').innerHTML = d;
         }
         getLastUpdate();
-
-        // Lay du lieu ca nhiem
-        var data = <?php require './php/getDataInfected.php' ?>;
-        //Lay du lieu hoi phuc
-        var recover = <?php require './php/getDataRecovered.php' ?>;
-        // Lay du lieu ngay thang nam
-        var date_db = <?php require './php/getDataDate.php' ?>;
-        //Circle data
-        var cir_data = <?php require './php/getDataCircle.php' ?>;
-
-        // Su ly du lieu dua vao bieu do
-        function getSevenDay(data) {
-            var arr_date_db = [];
-            for (let i = 0; i < data.length; i += 3) {
-                arr_date_db.push(data[i]);
-            }
-            var xValues = [];
-            for (let i = arr_date_db.length - 7; i < arr_date_db.length; i++) {
-                xValues.push(arr_date_db[i]);
-            }
-            return xValues;
-        }
-
-        
-        function getRecovered(data) {
-            var arr_rec = []
-            for (let i = data.length - 2; i >= 0; i -= 3) {
-                arr_rec.push(Number(data[i]));
-            }
-            var arr_new_rec = [];
-            for (i = 6; i >= 0; i--) {
-                arr_new_rec.push(arr_rec[i]);
-            }
-            return arr_new_rec;
-        }
-        
-        function getLeastDay(data) {
-            var arr = [];
-            for (let i = 0; i < 5; i++) {
-                arr.push(parseFloat(Number(data[i])) * 1000);
-            }
-            return arr;
-        }
-        // function getInfected(data) {
-            for (let i = data.length - 7; i < data.length; i++) {
-                //(parseFloat(Number(data[i])) * 1000);
-                console.log(data[i]);
-            }
-            // document.getElementById('#data_infected').innerHTML = "data";
-        // }
-
-        // getInfected(data);
-        
-
-
-        
     </script>
 </body>
 
