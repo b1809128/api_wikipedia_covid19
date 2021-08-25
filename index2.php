@@ -72,7 +72,21 @@ require './php/function.php';
                 <div class="image-map">
                 </div>
             </div> -->
-            <div id="data_infected"></div>
+            <div id="data_infected">
+                <?php
+                    $arr = [];
+                    foreach ($vietnam->find('.cbs-ibr') as $key => $element) {
+                        if ($key % 2 == 0) {
+                            $arr[] = $element->innertext;
+                        }
+                    }
+
+                    // echo sizeof($arr);
+                    for($i = count($arr)-7; $i < count($arr); $i++) {
+                        echo "<p>".$arr[$i]."</p>";
+                    }
+                ?>
+            </div>
         </div>
         <footer>
             <div>Copyright 2021 - All by QuocHuy's Developer </div>
@@ -109,20 +123,7 @@ require './php/function.php';
             return xValues;
         }
 
-        function getInfected(data) {
-            // var yValues = [];
-            var para;
-            for (let i = data.length - 7; i < data.length; i++) {
-                // yValues.push(parseFloat(Number(data[i])) * 1000);
-                para = document.createElement("p"); // Create a <p> element
-                para.innerText = (parseFloat(Number(data[i])) * 1000); // Insert text
-                document.getElementById("data_infected").appendChild(para);
-            }
-            // return yValues;
-        }
-
-        getInfected(data);
-
+        
         function getRecovered(data) {
             var arr_rec = []
             for (let i = data.length - 2; i >= 0; i -= 3) {
@@ -134,7 +135,7 @@ require './php/function.php';
             }
             return arr_new_rec;
         }
-
+        
         function getLeastDay(data) {
             var arr = [];
             for (let i = 0; i < 5; i++) {
@@ -142,6 +143,15 @@ require './php/function.php';
             }
             return arr;
         }
+        // function getInfected(data) {
+            for (let i = data.length - 7; i < data.length; i++) {
+                //(parseFloat(Number(data[i])) * 1000);
+                console.log(data[i]);
+            }
+            // document.getElementById('#data_infected').innerHTML = "data";
+        // }
+
+        // getInfected(data);
         
 
 
