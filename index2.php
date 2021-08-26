@@ -1,5 +1,5 @@
 <?php
-require './php/function.php';
+header("Access-Control-Allow-Origin: *");
 ?>
 <!DOCTYPE html>
 <html lang="en">
