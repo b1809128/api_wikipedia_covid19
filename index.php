@@ -73,7 +73,7 @@ require './php/function.php';
                     <?= $vietnam->find('td', 0)->innertext ?>
                 </div>
             </div>
-
+            
         </div>
         <footer>
             <p>Copyright 2021 - All by QuocHuy's Developer </p>
@@ -138,7 +138,7 @@ require './php/function.php';
             return arr;
         }
         
-        console.log(getInfected(data));
+        // console.log(getInfected(data));
         
 
         // Bieu do 1

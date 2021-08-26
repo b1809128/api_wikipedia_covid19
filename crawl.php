@@ -7,15 +7,21 @@
         )
     );
     
-    $content = file_get_html('https://covid.cantho.gov.vn/?fbclid=IwAR006ORto0SYOL-Iz5VqgRDZpzAbyPCqM4Dz6TnhLvRCL-XcHKkRlAQtMa0', false, stream_context_create($arrContextOptions));
+    $content = file_get_html('https://covid-19-hoc-tap.herokuapp.com/index2.php', false, stream_context_create($arrContextOptions));
     
-    // echo $content;
-    
-    // echo $content->find('div#divcovid3',0);
+    echo $content;
 
-    foreach ($content->find('span') as $key=>$element) {       
-            echo $key ."--";           
-            print_r($element->innertext);
-            echo "<br>";       
-    }
+    // foreach ($content->find('p') as $key=>$element) {       
+    //         echo $key ."--";           
+    //         print_r($element->innertext);
+    //         echo "<br>";                   
+    // }
+
+    // $arr = [];
+    // foreach ($content->find('span.number') as $key=>$element) {       
+    //     // echo $key ."--";           
+    //     $arr[] = $element->innertext;  
+    //     // echo "<br>";                   
+    // }
+    // echo json_encode($arr, JSON_HEX_TAG);
     

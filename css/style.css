@@ -141,8 +141,10 @@
 
 .data-chart {
     display: flex;
-    flex-direction: column;
-    width: 600px;
+    /* flex-direction: column; */
+    /* width: 600px; */
+   justify-content: center;
+   align-items: center;
     padding: 12px 24px;
 }
 
@@ -178,6 +180,9 @@ footer,
     .card-item{        
         width:140px;
         height:95px;
+    }
+    .data-chart{
+        flex-direction: column;
     }
 }
 
