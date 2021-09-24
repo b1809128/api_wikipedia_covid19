@@ -46,20 +46,20 @@ require './php/function.php';
             <div class="card">
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
-                    <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 17)->plaintext ?></div>
                     <div class="card-number-today">Hôm nay <?= $rss->find('strong', 0)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
-                    <div class="card-number"><?= $vietnam->find('th', 21)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 19)->plaintext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $vietnam->find('th', 19)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>
-                    <div class="card-number"><?= $vietnam->find('th', 22)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 20)->plaintext ?></div>
                 </div>
             </div>
 
