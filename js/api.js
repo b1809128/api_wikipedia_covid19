@@ -1,4 +1,4 @@
-const url = "http://localhost/crawl_data/api/getInfected.php";
+const url = "https://covid-19-hoc-tap.herokuapp.com/api/getInfected.php";
 
 fetch(url)
   .then((res) => {

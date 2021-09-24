@@ -25,12 +25,12 @@ require './php/function.php';
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
                     <div class="card-number"><?= $content->find('.info-box-number.number.text-red', 0)->innertext ?></div>
-                    <div class="card-number-today"><?= $content->find('span.number', 1)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 1)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
                     <div class="card-number"><?= $content->find('.info-box-number.number.text-green', 0)->innertext ?></div>
-                    <div class="card-number-today"><?= $content->find('span.number', 3)->innertext ?></div>
+                    <div class="card-number-today">Hôm nay +<?= $content->find('span.number', 3)->innertext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
@@ -46,20 +46,20 @@ require './php/function.php';
             <div class="card">
                 <div class="card-item infected vietnam">
                     <div class="card-text background_1">Số ca nhiễm</div>
-                    <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
-                    <div class="card-number-today"><?= $rss->find('strong', 0)->innertext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 17)->plaintext ?></div>
+                    <div class="card-number-today">Hôm nay <?= $rss->find('strong', 0)->innertext ?></div>
                 </div>
                 <div class="card-item recovered vietnam">
                     <div class="card-text background_2">Khỏi</div>
-                    <div class="card-number"><?= $vietnam->find('th', 21)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 19)->plaintext ?></div>
                 </div>
                 <div class="card-item treatment vietnam">
                     <div class="card-text background_3">Đang điều trị</div>
-                    <div class="card-number"><?= $vietnam->find('th', 19)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 18)->plaintext ?></div>
                 </div>
                 <div class="card-item death vietnam">
                     <div class="card-text background_4">Tử vong</div>
-                    <div class="card-number"><?= $vietnam->find('th', 22)->plaintext ?></div>
+                    <div class="card-number"><?= $vietnam->find('th', 20)->plaintext ?></div>
                 </div>
             </div>
 
@@ -148,12 +148,14 @@ require './php/function.php';
                 labels: getSevenDay(date_db),
                 datasets: [{
                     data: getInfected(data),
+                    // backgroundColor:"rgba(255,0,0,0.2)",
                     borderColor: "red",
                     fill: true,
                     label: "Số ca nhiễm"
                 }, {
                     data: getRecovered(recover),
-                    borderColor: "green",
+                    // backgroundColor:"rgba(0,255,0,0.3)",
+                    borderColor: "#28a745",
                     fill: true,
                     label: "Hồi phục"
                 }]
@@ -176,10 +178,10 @@ require './php/function.php';
         });
 
         // console.log(cir_data);
-        var infected = parseFloat(Number(cir_data[18])) * 1000;
-        var recov = parseFloat(Number(cir_data[21])) * 1000;
-        var treating = parseFloat(Number(cir_data[19])) * 1000;
-        var die = parseFloat(Number(cir_data[22])) * 1000;
+        var infected = parseFloat(Number(cir_data[17])) * 1000;
+        var recov = parseFloat(Number(cir_data[19])) * 1000;
+        var treating = parseFloat(Number(cir_data[18])) * 1000;
+        var die = parseFloat(Number(cir_data[20])) * 1000;
         // Bieu do 2
         var xValues_1 = ["Số ca nhiễm", "Hồi phục", "Đang điều trị", "Tử vong"];
         var yValues_1 = [infected, recov, treating, die];
