@@ -118,10 +118,10 @@ require './php/function.php';
             </div>
             <div id="data_circle">
                 <?php
-                    echo "<circle>".$vietnam->find('th', 18)->plaintext."</circle>";
-                    echo "<circle>".$vietnam->find('th', 21)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 17)->plaintext."</circle>";
                     echo "<circle>".$vietnam->find('th', 19)->plaintext."</circle>";
-                    echo "<circle>".$vietnam->find('th', 22)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 18)->plaintext."</circle>";
+                    echo "<circle>".$vietnam->find('th', 20)->plaintext."</circle>";
 
                 ?>
             </div>
