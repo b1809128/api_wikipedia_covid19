@@ -11,6 +11,7 @@ require './php/function.php';
     <title>Covid-19 Report</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./image/node2.svg">
+    <link rel="apple-touch-icon" href="./image/node2.svg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
